@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <style>
+        body{
+            background: black;
+            color: white;
+        }
+        #shape{
+            position: absolute;
+            transform:translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            border: solid 5px white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #next{
+            visibility: hidden;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="shape" onclick="a();">
+        <h1 id="click" >Click me!</h1>
+        <h1 id="next">It works!</h1>
+        <h2 id="count">20</h2>
+    </div>
+
+    <script>
+        function a(){
+            var countDown = 20;
+
+            var interval = setInterval(function()
+            {
+                document.getElementById("count").innerHTML = countDown--;
+            
+                if (countDown == -1){
+                    clearInterval(interval);
+                    document.getElementById("shape").style.transform = 'scale(1) translate(-50%,-50%)';
+                    document.getElementById("count").style.visibility = 'hidden';
+                    document.getElementById("click").style.visibility = 'hidden';
+                    document.getElementById("next").style.visibility = 'visible';
+                }
+                    
+            
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
